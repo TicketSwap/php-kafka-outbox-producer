@@ -19,3 +19,17 @@ return [
     TicketSwap\Kafka\Outbox\Bundle\TicketSwapKafkaOutboxBundle::class => ['all' => true],
 ];
 ```
+
+And finally, add this piece of configuration to the doctrine configuration:
+```yaml
+doctrine:
+    orm:
+      entity_managers:
+        default:
+          mappings:
+            TicketSwapKafkaOutboxProducer:
+              type: annotation
+              dir: '%kernel.project_dir%/vendor/ticketswap/kafka-outbox-producer/src/Entity'
+              is_bundle: false
+              prefix: TicketSwap\Kafka\Outbox\Entity
+```
