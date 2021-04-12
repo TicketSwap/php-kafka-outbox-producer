@@ -1,0 +1,13 @@
+parameters:
+    paths:
+        - src
+        - tests
+    phpunit:
+        convertUnionToIntersectionType: false
+    level: 8
+    parallel:
+        processTimeout: 900.0
+    treatPhpDocTypesAsCertain: false
+    inferPrivatePropertyTypeFromConstructor: true
+    reportUnmatchedIgnoredErrors: false
+    tmpDir: %currentWorkingDirectory%/var/phpstan

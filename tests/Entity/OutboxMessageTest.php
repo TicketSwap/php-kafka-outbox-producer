@@ -25,11 +25,11 @@ final class OutboxMessageTest extends TestCase
             $time,
             'foo bar');
 
-        $this->assertEquals($id->toString(), $message->getId());
-        $this->assertEquals('event.foo.bar', $message->getTopic());
-        $this->assertEquals('148', $message->getPartitionKey());
-        $this->assertEquals('1618234662000', $message->getTimestamp());
-        $this->assertEquals('foo bar', $message->getMessage());
-        $this->assertFalse($message->isProcessed());
+        self::assertEquals($id->toString(), $message->getId());
+        self::assertEquals('event.foo.bar', $message->getTopic());
+        self::assertEquals('148', $message->getPartitionKey());
+        self::assertEquals('1618234662000', $message->getTimestamp());
+        self::assertEquals('foo bar', $message->getMessage());
+        self::assertFalse($message->isProcessed());
     }
 }
