@@ -33,3 +33,25 @@ doctrine:
               is_bundle: false
               prefix: TicketSwap\Kafka\Outbox\Entity
 ```
+
+## Usage
+
+Make sure to inject the `TicketSwap\Kafka\Outbox\Producer\Producer` into a class, and call it like this:
+```php
+$topic = 'event.topic.name';
+$key = 'replace-with-uuid';
+$messageBody = json_encode(['foo' => 'bar'], JSON_THROW_ON_ERROR);
+
+try {
+    $this->producer->produce($topic, $key, $messageBody);
+} catch (Exception $exception) {
+    $this->logger->warning(
+        'Failed to send event to Kafka :(',
+        [
+            'topic'     => $topic,
+            'key'       => $key,
+            'exception' => $exception->getMessage(),
+        ]
+    );
+}
+```
