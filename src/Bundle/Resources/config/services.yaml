@@ -13,3 +13,6 @@ services:
 
     TicketSwap\Kafka\Outbox\Repository\OutboxMessageRepository:
         alias: TicketSwap\Kafka\Outbox\Repository\DoctrineOutboxMessageRepository
+
+    TicketSwap\Kafka\Outbox\Producer\Producer:
+        alias: TicketSwap\Kafka\Outbox\Producer\OutboxProducer
