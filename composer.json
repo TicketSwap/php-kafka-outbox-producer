@@ -1,0 +1,21 @@
+{
+    "name": "ticketswap/kafka-outbox-producer",
+    "description": "PHP library to produce kafka message using the outbox pattern",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "TicketSwap\\Kafka\\Outbox\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "TicketSwap\\Kafka\\Outbox\\": "tests/"
+        }
+    },
+    "require": {
+        "doctrine/orm": "^2.8"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    }
+}
