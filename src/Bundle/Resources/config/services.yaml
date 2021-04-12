@@ -7,3 +7,6 @@ services:
     TicketSwap\Kafka\Outbox\:
         resource: '../../../*'
         exclude: '../../{DependencyInjection}'
+
+    TicketSwap\Kafka\Outbox\Repository\OutboxMessageRepository:
+        alias: TicketSwap\Kafka\Outbox\Repository\DoctrineOutboxMessageRepository
