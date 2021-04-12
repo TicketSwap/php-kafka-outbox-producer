@@ -8,5 +8,8 @@ services:
         resource: '../../../*'
         exclude: '../../{DependencyInjection}'
 
+    TicketSwap\Kafka\Outbox\Clock\SystemClock:
+        alias: TicketSwap\Kafka\Outbox\Clock\RealSystemClock
+
     TicketSwap\Kafka\Outbox\Repository\OutboxMessageRepository:
         alias: TicketSwap\Kafka\Outbox\Repository\DoctrineOutboxMessageRepository
