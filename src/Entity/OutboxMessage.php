@@ -5,57 +5,44 @@ declare(strict_types=1);
 namespace TicketSwap\Kafka\Outbox\Entity;
 
 use DateTimeImmutable;
-use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\Column;
+use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
+use Doctrine\ORM\Mapping\Id;
+use Doctrine\ORM\Mapping\PreUpdate;
 use Ramsey\Uuid\UuidInterface;
+use Doctrine\ORM\Mapping\Entity;
+use Doctrine\ORM\Mapping\Index;
+use Doctrine\ORM\Mapping\Table;
 
-/**
- * @ORM\Table(name="outbox_message", indexes={
- *     @ORM\Index(name="processed", columns={"processed", "timestamp"})
- * }, options={"charset": "utf8mb4", "collate": "utf8mb4_unicode_ci"})
- * @ORM\Entity()
- * @ORM\HasLifecycleCallbacks
- */
+#[Table(name: "outbox_message", options: ["charset" => "utf8mb4", "collate" => "utf8mb4_unicode_ci"])]
+#[Index(columns: ["processed", "timestamp"], name: "processed")]
+#[Entity]
+#[HasLifecycleCallbacks]
 class OutboxMessage
 {
-    /**
-     * @ORM\Column(name="id", type="string", length=36, options={"collation": "utf8mb4_unicode_ci"})
-     * @ORM\Id
-     */
+    #[Column(name: "id", type: "string", length: 36, options: ["collation" => "utf8mb4_unicode_ci"])]
+    #[Id]
     private string $id;
 
-    /**
-     * @ORM\Column(name="topic", type="string")
-     */
+    #[Column(name: "topic", type: "string")]
     private string $topic;
 
-    /**
-     * @ORM\Column(name="partition_key", type="string")
-     */
+    #[Column(name: "partition_key", type: "string")]
     private string $partitionKey;
 
-    /**
-     * @ORM\Column(name="timestamp", type="bigint")
-     */
+    #[Column(name: "timestamp", type: "bigint")]
     private string $timestamp;
 
-    /**
-     * @ORM\Column(name="message", type="text")
-     */
+    #[Column(name: "message", type: "text")]
     private string $message;
 
-    /**
-     * @ORM\Column(name="processed", type="boolean")
-     */
+    #[Column(name: "processed", type: "boolean")]
     private bool $processed;
 
-    /**
-     * @ORM\Column(name="created_at", type="datetime_immutable")
-     */
+    #[Column(name: "created_at", type: "datetime_immutable")]
     private DateTimeImmutable $createdAt;
 
-    /**
-     * @ORM\Column(name="updated_at", type="datetime_immutable", nullable=true)
-     */
+    #[Column(name: "updated_at", type: "datetime_immutable", nullable: true)]
     private ?DateTimeImmutable $updatedAt = null;
 
     public function __construct(
@@ -126,9 +113,7 @@ class OutboxMessage
         return $this->updatedAt;
     }
 
-    /**
-     * @ORM\PreUpdate
-     */
+    #[PreUpdate]
     public function updateTimestamp() : void
     {
         $this->updatedAt = new DateTimeImmutable();
