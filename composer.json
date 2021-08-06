@@ -17,7 +17,8 @@
         "sa": "vendor/bin/phpstan analyze"
     },
     "require": {
-        "doctrine/orm": "^2.8",
+        "php": "^8.0",
+        "doctrine/orm": "^2.9",
         "symfony/http-kernel": "^5.2",
         "symfony/config": "^5.2",
         "symfony/dependency-injection": "^5.2",
