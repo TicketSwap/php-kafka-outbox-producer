@@ -13,8 +13,8 @@
         }
     },
     "scripts": {
-        "test": "vendor/bin/phpunit",
-        "sa": "vendor/bin/phpstan analyze"
+        "tests": "vendor/bin/phpunit",
+        "phpstan": "vendor/bin/phpstan analyze"
     },
     "require": {
         "php": "^8.0",
