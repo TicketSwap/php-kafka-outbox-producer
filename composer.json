@@ -2,6 +2,7 @@
     "name": "ticketswap/kafka-outbox-producer",
     "description": "PHP library to produce kafka message using the outbox pattern",
     "type": "library",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "TicketSwap\\Kafka\\Outbox\\": "src/"
