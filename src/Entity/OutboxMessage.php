@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\Index;
 use Doctrine\ORM\Mapping\Table;
 
-#[Table(name: "outbox_message", options: ["charset" => "utf8mb4", "collate" => "utf8mb4_unicode_ci"])]
+#[Table(name: "outbox_message", options: ["charset" => "utf8mb4", "collation" => "utf8mb4_unicode_ci"])]
 #[Index(columns: ["processed", "timestamp"], name: "processed")]
 #[Entity]
 #[HasLifecycleCallbacks]
