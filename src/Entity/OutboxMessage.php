@@ -20,7 +20,7 @@ use Doctrine\ORM\Mapping\Table;
 #[HasLifecycleCallbacks]
 class OutboxMessage
 {
-    #[Column(name: "id", type: "string", length: 36, options: ["collation" => "utf8mb4_unicode_ci"])]
+    #[Column(name: "id", type: "string", length: 36)]
     #[Id]
     private string $id;
 
